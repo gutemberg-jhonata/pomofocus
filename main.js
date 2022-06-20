@@ -7,6 +7,7 @@ buttons.forEach(button => {
         button.setAttribute('active', 'true');
         const id = button.getAttribute('id');
         changeTheme(id);
+        changeTitle(id);
     })
 })
 
@@ -26,4 +27,16 @@ const colors = {
 function changeTheme(id) {
     const color = colors[id];
     root.style.setProperty('--main-color', color);
+}
+
+const titleElement = document.querySelector('title');
+const titles = {
+    'pomodoro': '25:00 - Time to focus!',
+    'short-break': '05:00 - Time for break!',
+    'long-break': '15:00 - Time for break!'
+}
+
+function changeTitle(id) {
+    const title = titles[id];
+    titleElement.innerHTML = title;
 }
