@@ -1,0 +1,40 @@
+:root {
+    --main-color: rgb(217, 85, 80);
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: var(--main-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    width: 480px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    background: none;
+
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 2px 16px;
+    height: 28px;
+}
+
+button[active="true"] {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.15);
+}
