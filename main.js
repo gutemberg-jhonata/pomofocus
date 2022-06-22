@@ -12,6 +12,7 @@ buttons.forEach(button => {
         const id = button.getAttribute('id');
         changeTheme(id);
         changeTitle(id);
+        changeTimer(id);
     })
 })
 
@@ -31,4 +32,15 @@ const titles = {
 function changeTitle(id) {
     const title = titles[id];
     titleElement.innerHTML = title;
+}
+
+const timerText = document.querySelector('h1');
+const timerType = {
+    'pomodoro': '25:00',
+    'short-break': '05:00',
+    'long-break': '15:00'
+}
+
+function changeTimer(id) {
+    timerText.innerText = timerType[id];
 }
