@@ -2,6 +2,11 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        
         <link href="./styles.css" rel="stylesheet">
         
         <title>Pomodoro Timer Online - Pomofocus</title>
@@ -11,11 +16,15 @@
         <link rel="shortcut icon" type="image/png" href="./public/favicon-16x16.png" sizes="16x16">
     </head>
     <body>
-        <div>
-            <button id="pomodoro" active="true">Pomodoro</button>
-            <button id="short-break">Short-break</button>
-            <button id="long-break">Long-break</button>
-        </div>
+        <main>
+            <nav>
+                <button id="pomodoro" active="true">Pomodoro</button>
+                <button id="short-break">Short-break</button>
+                <button id="long-break">Long-break</button>
+            </nav>
+
+            <h1>25:00</h1>
+        </main>
 
         <script src="./main.js"></script>
     </body>
