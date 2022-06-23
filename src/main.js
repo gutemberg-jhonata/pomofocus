@@ -1,4 +1,4 @@
-import { changeTheme } from "./src/styles/theme.js";
+import { changeTheme } from "./styles/theme.js";
 
 const buttons = document.querySelectorAll("nav button");
 
