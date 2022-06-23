@@ -13,6 +13,13 @@ body {
     align-items: center;
 }
 
+button {
+    cursor: pointer;
+    border: none;
+    margin: 0;
+    background: none;
+}
+
 main {
     width: 480px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -26,11 +33,6 @@ main {
 }
 
 nav button {
-    cursor: pointer;
-    border: none;
-    margin: 0;
-    background: none;
-
     color: white;
     font-size: 16px;
     border-radius: 4px;
@@ -47,4 +49,27 @@ h1 {
     margin: 0;
     color: white;
     font-size: 120px;
+}
+
+.action-button {
+    background-color: white;
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 22px;
+    height: 55px;
+    width: 200px;
+    border-radius: 4px;
+    box-shadow: rgb(235 235 235) 0px 6px 0px;
+    transition-duration: .2s;
+    transition-property: box-shadow, transform;
+}
+
+.action-button:active {
+    box-shadow: rgb(235 235 235) 0px 0px 0px;
+    transform: translateY(6px);
+}
+
+.action-button[stop="true"] {
+    box-shadow: rgb(235 235 235) 0px 0px 0px;
+    transform: translateY(6px);
 }

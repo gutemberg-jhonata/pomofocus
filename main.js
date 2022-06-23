@@ -1,6 +1,6 @@
 import { changeTheme } from "./src/styles/theme.js";
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("nav button");
 
 buttons.forEach(button => {
     button.addEventListener('click', (e) => {
@@ -43,4 +43,16 @@ const timerType = {
 
 function changeTimer(id) {
     timerText.innerText = timerType[id];
+}
+
+const actionButton = document.querySelector('button.action-button');
+let isTimerStoped = false;
+actionButton.addEventListener('click', () => {
+    isTimerStoped = !isTimerStoped;
+    handleTimer(isTimerStoped);
+})
+
+function handleTimer(isTimerStoped) {
+    actionButton.setAttribute('stop', isTimerStoped);
+    actionButton.innerText = isTimerStoped ? "STOP" : "START";
 }
