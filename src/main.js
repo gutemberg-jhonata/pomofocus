@@ -47,7 +47,12 @@ let isTimerStoped = false;
 actionButton.addEventListener('click', () => {
     isTimerStoped = !isTimerStoped;
     handleTimer(isTimerStoped);
-    startTimer();
+    
+    if (isTimerStoped) {
+        startTimer();
+    } else {
+        stopTimer();
+    }
 })
 
 function handleTimer(isTimerStoped) {
@@ -57,7 +62,8 @@ function handleTimer(isTimerStoped) {
 
 // Timer
 const timerDisplay = document.querySelector('h1');
-let timerCountInSeconds;
+let timerCountInSeconds = timerType['pomodoro'];
+let timerInterval;
 
 function renderTimerDisplay() {
     const minutes = Math.floor(timerCountInSeconds / 60);
@@ -70,8 +76,12 @@ function renderTimerDisplay() {
 }
 
 function startTimer() {
-    setInterval(() => {
+    timerInterval = setInterval(() => {
        timerCountInSeconds--;
        renderTimerDisplay(timerCountInSeconds);
     }, 1000)
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
 }
