@@ -6,11 +6,20 @@ const timerMode = {
 
 const timerDisplay = document.querySelector('h1');
 const titleElement = document.querySelector('title');
+const actionButton = document.querySelector('button.action-button');
+
 let activeTimerMode = 'pomodoro';
 let timerCountInSeconds = timerMode[activeTimerMode];
 let timerInterval;
 
+export let isTimerRunning = false;
+
 export function startTimer() {
+    isTimerRunning = true;
+
+    actionButton.setAttribute('stop', isTimerRunning);
+    actionButton.innerText = "STOP";
+
     timerInterval = setInterval(() => {
        timerCountInSeconds--;
        renderTimerDisplay();
@@ -35,12 +44,18 @@ function renderTimerDisplay() {
 }
 
 export function stopTimer() {
+    isTimerRunning = false;
+
+    actionButton.setAttribute('stop', isTimerRunning);
+    actionButton.innerText = "START";
+    
     clearInterval(timerInterval);
 }
 
 export function changeTimerMode(key) {
     activeTimerMode = key;
     timerCountInSeconds = timerMode[key];
+
     stopTimer();
     renderTimerDisplay();
 }
