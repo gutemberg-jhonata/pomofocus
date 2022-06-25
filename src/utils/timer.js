@@ -1,3 +1,5 @@
+import { changeTheme } from '../styles/theme.js';
+
 const timerMode = {
     'pomodoro': 25 * 60, // 25 minutos
     'short-break': 5 * 60, // 5 minutos
@@ -22,7 +24,11 @@ export function startTimer() {
 
     timerInterval = setInterval(() => {
        timerCountInSeconds--;
-       renderTimerDisplay();
+       if (!timerCountInSeconds) {
+           changeTimerMode('short-break');
+       } else {
+           renderTimerDisplay();
+       }
     }, 1000)
 }
 
@@ -56,6 +62,18 @@ export function changeTimerMode(key) {
     activeTimerMode = key;
     timerCountInSeconds = timerMode[key];
 
+    clearTimerModeButtons();
+    const timerModeButton = document.getElementById(key);
+    timerModeButton.setAttribute('active', true);
+
+    changeTheme(activeTimerMode);
     stopTimer();
     renderTimerDisplay();
+}
+
+function clearTimerModeButtons() {
+    const buttons = document.querySelectorAll("nav button");
+    buttons.forEach(button => {
+        button.setAttribute('active', false);
+    });
 }
