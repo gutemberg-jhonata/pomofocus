@@ -1,5 +1,5 @@
 import { changeTheme } from "./styles/theme.js";
-import { startTimer, stopTimer, changeTimerMode } from "./timer.js";
+import { startTimer, stopTimer, changeTimerMode } from "./utils/timer.js";
 
 // Navigation
 const buttons = document.querySelectorAll("nav button");
