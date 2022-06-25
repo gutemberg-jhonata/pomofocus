@@ -11,9 +11,7 @@ buttons.forEach(button => {
         button.setAttribute('active', 'true');
 
         const id = button.getAttribute('id');
-        
         changeTheme(id);
-        changeTitle(id);
         changeTimerMode(id);
     })
 })
@@ -22,19 +20,6 @@ function cleanButtonsAtrributes() {
     buttons.forEach(button => {
         button.setAttribute('active', 'false');
     });
-}
-
-// Title
-const titleElement = document.querySelector('title');
-const titles = {
-    'pomodoro': '25:00 - Time to focus!',
-    'short-break': '05:00 - Time for break!',
-    'long-break': '15:00 - Time for break!'
-}
-
-function changeTitle(id) {
-    const title = titles[id];
-    titleElement.innerHTML = title;
 }
 
 // Action Button

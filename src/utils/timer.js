@@ -5,13 +5,15 @@ const timerMode = {
 }
 
 const timerDisplay = document.querySelector('h1');
-let timerCountInSeconds = timerMode.pomodoro;
+const titleElement = document.querySelector('title');
+let activeTimerMode = 'pomodoro';
+let timerCountInSeconds = timerMode[activeTimerMode];
 let timerInterval;
 
 export function startTimer() {
     timerInterval = setInterval(() => {
        timerCountInSeconds--;
-       renderTimerDisplay(timerCountInSeconds);
+       renderTimerDisplay();
     }, 1000)
 }
 
@@ -21,8 +23,15 @@ function renderTimerDisplay() {
 
     const minutesString = String(minutes).padStart(2, '0');
     const secondsString = String(seconds).padStart(2, '0');
+    const displayString = `${minutesString}:${secondsString}`;
 
-    timerDisplay.innerText = `${minutesString}:${secondsString}`;
+    timerDisplay.innerText = displayString;
+
+    if (activeTimerMode === 'pomodoro') {
+        titleElement.innerText = `${displayString} - Time to focus!`;
+    } else {
+        titleElement.innerText = `${displayString} - Time to break!`;
+    }
 }
 
 export function stopTimer() {
@@ -30,6 +39,7 @@ export function stopTimer() {
 }
 
 export function changeTimerMode(key) {
+    activeTimerMode = key;
     timerCountInSeconds = timerMode[key];
     stopTimer();
     renderTimerDisplay();
