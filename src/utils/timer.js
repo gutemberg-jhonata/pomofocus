@@ -13,6 +13,7 @@ const actionButton = document.querySelector('button.action-button');
 let activeTimerMode = 'pomodoro';
 let timerCountInSeconds = timerMode[activeTimerMode];
 let timerInterval;
+let focusCount = 0;
 
 export let isTimerRunning = false;
 
@@ -25,7 +26,8 @@ export function startTimer() {
     timerInterval = setInterval(() => {
        timerCountInSeconds--;
        if (!timerCountInSeconds) {
-           changeTimerMode('short-break');
+           const nextTimerMode = findNextTimerMode();
+           changeTimerMode(nextTimerMode);
        } else {
            renderTimerDisplay();
        }
@@ -76,4 +78,19 @@ function clearTimerModeButtons() {
     buttons.forEach(button => {
         button.setAttribute('active', false);
     });
+}
+
+function findNextTimerMode() {
+    if (activeTimerMode === 'pomodoro') {
+        focusCount++;
+        
+        if (focusCount > 3) {
+            focusCount = 0;
+            return 'long-break';
+        }
+
+        return 'short-break';
+    }
+
+    return 'pomodoro';
 }
