@@ -5,6 +5,8 @@ import {
     isTimerRunning
 } from "./utils/timer.js";
 
+import { playClickButtonAudio } from './utils/audio.js';
+
 // Navigation
 const buttons = document.querySelectorAll("nav button");
 buttons.forEach(button => {
@@ -22,4 +24,5 @@ actionButton.addEventListener('click', () => {
     } else {
         startTimer();
     }
+    playClickButtonAudio();
 })
