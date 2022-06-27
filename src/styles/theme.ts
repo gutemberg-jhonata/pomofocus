@@ -20,7 +20,7 @@ const themes = {
 
 export function changeTheme(theme) {
     const { color, iconType } = themes[theme];
-    const href = `./public/favicon${iconType}.ico`;
+    const href = `/favicon${iconType}.ico`;
 
     root.style.setProperty('--main-color', color);
     icon.setAttribute('href', href);

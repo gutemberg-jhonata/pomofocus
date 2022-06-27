@@ -1,4 +1,6 @@
-import { changeTheme } from '../styles/theme.js';
+import { changeTheme } from '../styles/theme';
+
+type TimerModeProps = 'pomodoro' | 'short-break' | 'long-break';
 
 const timerMode = {
     'pomodoro': 25 * 60, // 25 minutos
@@ -8,11 +10,12 @@ const timerMode = {
 
 const timerDisplay = document.querySelector('h1');
 const titleElement = document.querySelector('title');
-const actionButton = document.querySelector('button.action-button');
+const actionButton: HTMLButtonElement = 
+document.querySelector('button.action-button');
 
 let activeTimerMode = 'pomodoro';
-let timerCountInSeconds = timerMode[activeTimerMode];
-let timerInterval;
+let timerCountInSeconds: number = timerMode[activeTimerMode];
+let timerInterval: number;
 let focusCount = 0;
 
 export let isTimerRunning = false;
@@ -20,7 +23,7 @@ export let isTimerRunning = false;
 export function startTimer() {
     isTimerRunning = true;
 
-    actionButton.setAttribute('stop', isTimerRunning);
+    actionButton.setAttribute('stop', String(isTimerRunning));
     actionButton.innerText = "STOP";
 
     timerInterval = setInterval(() => {
@@ -54,19 +57,19 @@ function renderTimerDisplay() {
 export function stopTimer() {
     isTimerRunning = false;
 
-    actionButton.setAttribute('stop', isTimerRunning);
+    actionButton.setAttribute('stop', String(isTimerRunning));
     actionButton.innerText = "START";
     
     clearInterval(timerInterval);
 }
 
-export function changeTimerMode(key) {
+export function changeTimerMode(key: TimerModeProps) {
     activeTimerMode = key;
     timerCountInSeconds = timerMode[key];
 
     clearTimerModeButtons();
     const timerModeButton = document.getElementById(key);
-    timerModeButton.setAttribute('active', true);
+    timerModeButton.setAttribute('active', String(true));
 
     changeTheme(activeTimerMode);
     stopTimer();
@@ -76,7 +79,7 @@ export function changeTimerMode(key) {
 function clearTimerModeButtons() {
     const buttons = document.querySelectorAll("nav button");
     buttons.forEach(button => {
-        button.setAttribute('active', false);
+        button.setAttribute('active', String(false));
     });
 }
 

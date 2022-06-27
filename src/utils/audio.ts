@@ -1,4 +1,4 @@
-const clickButtonAudio = new Audio('../../public/click-button.wav');
+const clickButtonAudio = new Audio('/click-button.wav');
 
 export function playClickButtonAudio() {
     stopClickButtonAudio();

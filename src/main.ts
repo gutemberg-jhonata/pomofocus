@@ -3,21 +3,25 @@ import {
     stopTimer, 
     changeTimerMode,
     isTimerRunning
-} from "./utils/timer.js";
+} from "./utils/timer";
 
-import { playClickButtonAudio } from './utils/audio.js';
+import { playClickButtonAudio } from './utils/audio';
+
+type TimerModeProps = 'pomodoro' | 'short-break' | 'long-break';
 
 // Navigation
-const buttons = document.querySelectorAll("nav button");
+const buttons = document.querySelectorAll<HTMLButtonElement>("nav button");
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const key = button.getAttribute('id');
-        changeTimerMode(key);
+        changeTimerMode(key as TimerModeProps);
     })
 })
 
 // Action Button
-const actionButton = document.querySelector('button.action-button');
+const actionButton = 
+document.querySelector<HTMLButtonElement>('button.action-button');
+
 actionButton.addEventListener('click', () => {
     if (isTimerRunning) {
         stopTimer();
