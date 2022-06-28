@@ -1,9 +1,29 @@
 const root = document.documentElement;
-const icon = document.querySelector('link[rel="shortcut icon"]');
-const icon32x32 = document.querySelector('link[rel="shortcut icon"][sizes="32x32"]');
-const icon16x16 = document.querySelector('link[rel="shortcut icon"][sizes="16x16"]');
+const icon = 
+document.querySelector('link[rel="shortcut icon"]') as HTMLLinkElement;
+const icon32x32 = 
+document.querySelector('link[rel="shortcut icon"][sizes="32x32"]') as HTMLLinkElement;
+const icon16x16 = 
+document.querySelector('link[rel="shortcut icon"][sizes="16x16"]') as HTMLLinkElement;
 
-const themes = {
+type Theme = 'pomodoro' | 'short-break' | 'long-break';
+
+type ThemeProps = {
+    'pomodoro': {
+        color: string,
+        iconType: string
+    },
+    'short-break': {
+        color: string,
+        iconType: string
+    },
+    'long-break': {
+        color: string,
+        iconType: string
+    }
+}
+
+const themes: ThemeProps = {
     'pomodoro': {
         color: 'rgb(217, 85, 80)',
         iconType: ''
@@ -18,7 +38,7 @@ const themes = {
     },
 }
 
-export function changeTheme(theme) {
+export function changeTheme(theme: Theme) {
     const { color, iconType } = themes[theme];
     const href = `/favicon${iconType}.ico`;
 

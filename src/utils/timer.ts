@@ -1,19 +1,25 @@
 import { changeTheme } from '../styles/theme';
 
-type TimerModeProps = 'pomodoro' | 'short-break' | 'long-break';
+type TimerMode = 'pomodoro' | 'short-break' | 'long-break';
 
-const timerMode = {
-    'pomodoro': 25 * 60, // 25 minutos
-    'short-break': 5 * 60, // 5 minutos
-    'long-break': 15 * 60 // 15 minutos
+type TimerModeProps = {
+    'pomodoro': number,
+    'short-break': number,
+    'long-break': number,
 }
 
-const timerDisplay = document.querySelector('h1');
-const titleElement = document.querySelector('title');
-const actionButton: HTMLButtonElement = 
-document.querySelector('button.action-button');
+const timerMode: TimerModeProps = {
+    'pomodoro': 25 * 60, // 25 minutos
+    'short-break': 5 * 60, // 5 minutos
+    'long-break': 15 * 60, // 15 minutos
+}
 
-let activeTimerMode = 'pomodoro';
+const timerDisplay = document.querySelector('h1') as HTMLHeadElement;
+const titleElement = document.querySelector('title') as HTMLTitleElement;
+const actionButton = 
+document.querySelector('button.action-button') as HTMLButtonElement;
+
+let activeTimerMode: TimerMode = 'pomodoro';
 let timerCountInSeconds: number = timerMode[activeTimerMode];
 let timerInterval: number;
 let focusCount = 0;
@@ -63,12 +69,12 @@ export function stopTimer() {
     clearInterval(timerInterval);
 }
 
-export function changeTimerMode(key: TimerModeProps) {
+export function changeTimerMode(key: TimerMode) {
     activeTimerMode = key;
     timerCountInSeconds = timerMode[key];
 
     clearTimerModeButtons();
-    const timerModeButton = document.getElementById(key);
+    const timerModeButton = document.getElementById(key) as HTMLButtonElement;
     timerModeButton.setAttribute('active', String(true));
 
     changeTheme(activeTimerMode);

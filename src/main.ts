@@ -20,7 +20,7 @@ buttons.forEach(button => {
 
 // Action Button
 const actionButton = 
-document.querySelector<HTMLButtonElement>('button.action-button');
+document.querySelector('button.action-button') as HTMLButtonElement;
 
 actionButton.addEventListener('click', () => {
     if (isTimerRunning) {
