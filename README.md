@@ -13,7 +13,13 @@
 
 <br>
 
-# 🧪 Tecnologias
+<p align="center">
+  <video width="100%" autoplay loop>
+    <source src=".github/pomofocus.mp4">
+  </video>
+</p>
+
+## 🧪 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
