@@ -28,9 +28,8 @@ Clone o projeto na sua máquina:
 ```bash 
 git clone https://github.com/gutemberg-jhonata/pomofocus.git
 cd pomofocus
+npm run dev
 ```
-
-Abra o arquivo index.html no navegador ou execute o arquivo com o Live Server.
 
 ## 💻 Projeto
 
