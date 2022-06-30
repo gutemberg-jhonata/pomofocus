@@ -1,4 +1,5 @@
 import { changeTheme } from '../styles/theme';
+import { playFinishTimerAudio } from './audio';
 
 type TimerMode = 'pomodoro' | 'short-break' | 'long-break';
 
@@ -35,6 +36,8 @@ export function startTimer() {
     timerInterval = setInterval(() => {
        timerCountInSeconds--;
        if (!timerCountInSeconds) {
+           playFinishTimerAudio();
+           
            const nextTimerMode = findNextTimerMode();
            changeTimerMode(nextTimerMode);
        } else {
